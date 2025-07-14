@@ -1,0 +1,53 @@
+🤖 attendence_fillup_agent
+
+🔍 Project Goal
+Build a smart AI-powered agent that automates data entry into an online attendance form using data from a CSV file. This agent will:
+- Read data from a CSV
+- Open a web-based form
+- Fill out each row of data into the form
+- Submit the form
+- Log success or failure of each entry
+
+📂 Input
+- File: `attendance_data.csv` (inside /data folder)
+- Format:
+  | Name  | Date       | Time   |
+  |-------|------------|--------|
+  | Tony  | 2025-07-01 | 09:00  |
+
+📤 Output
+- Filled attendance form on a webpage (automated by the agent)
+- Log file showing which rows succeeded or failed
+
+📐 Architecture Plan
+
+      ┌────────────────────┐
+      │  CSV Input (data/) │
+      └────────┬───────────┘
+               │
+      ┌────────▼─────────┐
+      │   Data Parser    │ ← reads CSV
+      └────────┬─────────┘
+               │
+      ┌────────▼─────────┐
+      │    UI Agent      │ ← Selenium fills form
+      └────────┬─────────┘
+               │
+      ┌────────▼────────┐
+      │   Log Writer    │ ← saves logs
+      └─────────────────┘
+
+
+🧰 Tools Used
+- Python 3.11
+- Selenium
+- pandas
+- Chrome + ChromeDriver
+
+🚧 To-Do
+- [x] Setup folders and tools (Day 2)
+- [ ] Build test HTML form (Day 3)
+- [ ] Read CSV and fill form using Selenium
+- [ ] Add logging
+- [ ] Add error handling and testing
+
