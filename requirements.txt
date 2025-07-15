@@ -1,1 +1,6 @@
+streamlit
+pandas
+selenium
+together
+python-dotenv
 
