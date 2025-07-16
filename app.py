@@ -4,7 +4,7 @@ import pandas as pd
 from src.selenium_runner import run_agent_with_mapping_and_return_failed
 
 # File upload at the top
-st.markdown("**Note:** Please upload a `.csv` file that includes columns: `Name`, `Date`, and `Time`.")
+#st.markdown("**Note:** Please upload a `.csv` file that includes columns: `Name`, `Date`, and `Time`.")
 uploaded_file = st.file_uploader("Upload your CSV file", type=["csv"])
 
 if uploaded_file is not None:
