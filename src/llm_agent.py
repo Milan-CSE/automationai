@@ -52,23 +52,11 @@ Only return valid JSON in this format:
             ]
         )
 
-
         raw_text = response.choices[0].message.content
         print("=== RAW LLM OUTPUT ===")
         print(raw_text)
 
-        #find_json = re.search(r"```json\s*(\{.*?})\s*```", raw_text, re.DOTALL) Replacing this with this:
-
         return extract_json_from_text(raw_text)
-
-
-
-        # find_json:
-         #   json_block = find_json.group(1)
-          #  return json.loads(json_block)
-        #else:
-         #   print("No valid JSON found.")
-          #  return None
 
     except Exception as e:
         print("Error while calling LLM", e)

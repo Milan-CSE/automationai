@@ -22,7 +22,7 @@ if uploaded_file is not None:
 # Title
 col1, = st.columns([0.85])
 with col1:
-    st.markdown("<h1 style='color:#4CAF50;'>🧠 AI Attendance Filler</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='color:#4CAF50;'> AI ATTENDANCE FLLER</h1>", unsafe_allow_html=True)
 
 st.session_state.setdefault("failed_rows", None)
 st.session_state.setdefault("retry_index", None)
