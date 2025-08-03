@@ -1,32 +1,319 @@
-Successfully fillup: Alice Miller - 14-07-2025 - 09:51
-Successfully fillup: John Smith - 13-07-2025 - 10:09
-Successfully fillup: Emma Johnson - 12-07-2025 - 08:02
-Successfully fillup: Eva Miller - 11-07-2025 - 10:05
-Successfully fillup: Emma Garcia - 10-07-2025 - 10:23
-Successfully fillup: Bob Johnson - 09-07-2025 - 08:16
-Successfully fillup: Ava Garcia - 08-07-2025 - 09:14
-Successfully fillup: Charlie Brown - 07-07-2025 - 08:28
-Successfully fillup: Liam Davis - 06-07-2025 - 10:45
-Successfully fillup: Emma Davis - 05-07-2025 - 09:43
-Successfully fillup: Noah Garcia - 04-07-2025 - 08:00
-Successfully fillup: Emma Jones - 03-07-2025 - 08:23
-Successfully fillup: Ava Davis - 02-07-2025 - 08:07
-Successfully fillup: Bob Brown - 01-07-2025 - 10:56
-Successfully fillup: Noah Johnson - 30-06-2025 - 10:44
-Successfully fillup: Bob Garcia - 29-06-2025 - 10:15
-Successfully fillup: Bob Williams - 28-06-2025 - 08:38
-Successfully fillup: John Johnson - 27-06-2025 - 08:43
-Successfully fillup: Noah Miller - 26-06-2025 - 08:27
-Successfully fillup: John Jones - 25-06-2025 - 08:04
-Successfully fillup: Alice Garcia - 24-06-2025 - 10:42
-Successfully fillup: Liam Johnson - 23-06-2025 - 09:03
-Successfully fillup: Noah Johnson - 22-06-2025 - 10:54
-Successfully fillup: Noah Garcia - 21-06-2025 - 09:48
-Successfully fillup: Alice Williams - 20-06-2025 - 09:30
-Successfully fillup: Charlie Johnson - 19-06-2025 - 10:15
-Successfully fillup: Eva Smith - 18-06-2025 - 09:51
-Successfully fillup: Eva Miller - 17-06-2025 - 09:13
-Successfully fillup: John Jones - 16-06-2025 - 10:16
-Successfully fillup: Alice Williams - 15-06-2025 - 09:31
-Successfully fillup: John Davis - 14-06-2025 - 09:44
-Successfully fillup: John Garcia - 13-06-2025 - 09:38
+Failed row 1: {'Name': 'Alice Miller', 'Date': '14-07-2025', 'Time': '09:51'} - Error: Message: element click intercepted: Element <button id="submit" type="submit" class="btn btn-primary">...</button> is not clickable at point (729, 666). Other element would receive the click: <iframe frameborder="0" src="https://91e2663a72f4abf12e643a8ff195875b.safeframe.googlesyndication.com/safeframe/1-0-45/html/container.html" id="google_ads_iframe_/21849154601,22343295815/Ad.Plus-Anchor_0" title="3rd party ad content" name="" scrolling="no" marginwidth="0" marginheight="0" width="728" height="90" data-is-safeframe="true" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" allow="private-state-token-redemption;attribution-reporting" aria-label="Advertisement" tabindex="0" data-google-container-id="1" style="border: 0px; vertical-align: bottom;" data-load-complete="true"></iframe>
+  (Session info: chrome=138.0.7204.184)
+Stacktrace:
+	GetHandleVerifier [0x0x7ff7af496f95+76917]
+	GetHandleVerifier [0x0x7ff7af496ff0+77008]
+	(No symbol) [0x0x7ff7af249dea]
+	(No symbol) [0x0x7ff7af2a8269]
+	(No symbol) [0x0x7ff7af2a5c02]
+	(No symbol) [0x0x7ff7af2a2c41]
+	(No symbol) [0x0x7ff7af2a1b31]
+	(No symbol) [0x0x7ff7af293368]
+	(No symbol) [0x0x7ff7af2c846a]
+	(No symbol) [0x0x7ff7af292c16]
+	(No symbol) [0x0x7ff7af2c8680]
+	(No symbol) [0x0x7ff7af2f065c]
+	(No symbol) [0x0x7ff7af2c8243]
+	(No symbol) [0x0x7ff7af291431]
+	(No symbol) [0x0x7ff7af2921c3]
+	GetHandleVerifier [0x0x7ff7af76d2cd+3051437]
+	GetHandleVerifier [0x0x7ff7af767923+3028483]
+	GetHandleVerifier [0x0x7ff7af7858bd+3151261]
+	GetHandleVerifier [0x0x7ff7af4b185e+185662]
+	GetHandleVerifier [0x0x7ff7af4b971f+218111]
+	GetHandleVerifier [0x0x7ff7af49fb14+112628]
+	GetHandleVerifier [0x0x7ff7af49fcc9+113065]
+	GetHandleVerifier [0x0x7ff7af486c98+10616]
+	BaseThreadInitThunk [0x0x7ffc1863259d+29]
+	RtlUserThreadStart [0x0x7ffc19ecaf78+40]
+
+Failed row 2: {'Name': 'John Smith', 'Date': '13-07-2025', 'Time': '10:09'} - Error: Message: element click intercepted: Element <button id="submit" type="submit" class="btn btn-primary">...</button> is not clickable at point (729, 666). Other element would receive the click: <iframe frameborder="0" src="https://0da3d73c47f4f15526dd21114cb436b3.safeframe.googlesyndication.com/safeframe/1-0-45/html/container.html" id="google_ads_iframe_/21849154601,22343295815/Ad.Plus-Anchor_0" title="3rd party ad content" name="" scrolling="no" marginwidth="0" marginheight="0" width="728" height="90" data-is-safeframe="true" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" allow="private-state-token-redemption;attribution-reporting" aria-label="Advertisement" tabindex="0" data-google-container-id="1" style="border: 0px; vertical-align: bottom;" data-load-complete="true"></iframe>
+  (Session info: chrome=138.0.7204.184)
+Stacktrace:
+	GetHandleVerifier [0x0x7ff7af496f95+76917]
+	GetHandleVerifier [0x0x7ff7af496ff0+77008]
+	(No symbol) [0x0x7ff7af249dea]
+	(No symbol) [0x0x7ff7af2a8269]
+	(No symbol) [0x0x7ff7af2a5c02]
+	(No symbol) [0x0x7ff7af2a2c41]
+	(No symbol) [0x0x7ff7af2a1b31]
+	(No symbol) [0x0x7ff7af293368]
+	(No symbol) [0x0x7ff7af2c846a]
+	(No symbol) [0x0x7ff7af292c16]
+	(No symbol) [0x0x7ff7af2c8680]
+	(No symbol) [0x0x7ff7af2f065c]
+	(No symbol) [0x0x7ff7af2c8243]
+	(No symbol) [0x0x7ff7af291431]
+	(No symbol) [0x0x7ff7af2921c3]
+	GetHandleVerifier [0x0x7ff7af76d2cd+3051437]
+	GetHandleVerifier [0x0x7ff7af767923+3028483]
+	GetHandleVerifier [0x0x7ff7af7858bd+3151261]
+	GetHandleVerifier [0x0x7ff7af4b185e+185662]
+	GetHandleVerifier [0x0x7ff7af4b971f+218111]
+	GetHandleVerifier [0x0x7ff7af49fb14+112628]
+	GetHandleVerifier [0x0x7ff7af49fcc9+113065]
+	GetHandleVerifier [0x0x7ff7af486c98+10616]
+	BaseThreadInitThunk [0x0x7ffc1863259d+29]
+	RtlUserThreadStart [0x0x7ffc19ecaf78+40]
+
+Failed row 3: {'Name': 'Emma Johnson', 'Date': '12-07-2025', 'Time': '08:02'} - Error: Message: element click intercepted: Element <button id="submit" type="submit" class="btn btn-primary">...</button> is not clickable at point (729, 666). Other element would receive the click: <iframe frameborder="0" src="https://62af1e7cd7174ad7983f352d975e2c7a.safeframe.googlesyndication.com/safeframe/1-0-45/html/container.html" id="google_ads_iframe_/21849154601,22343295815/Ad.Plus-Anchor_0" title="3rd party ad content" name="" scrolling="no" marginwidth="0" marginheight="0" width="728" height="90" data-is-safeframe="true" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" allow="private-state-token-redemption;attribution-reporting" aria-label="Advertisement" tabindex="0" data-google-container-id="1" style="border: 0px; vertical-align: bottom;" data-load-complete="true"></iframe>
+  (Session info: chrome=138.0.7204.184)
+Stacktrace:
+	GetHandleVerifier [0x0x7ff7af496f95+76917]
+	GetHandleVerifier [0x0x7ff7af496ff0+77008]
+	(No symbol) [0x0x7ff7af249dea]
+	(No symbol) [0x0x7ff7af2a8269]
+	(No symbol) [0x0x7ff7af2a5c02]
+	(No symbol) [0x0x7ff7af2a2c41]
+	(No symbol) [0x0x7ff7af2a1b31]
+	(No symbol) [0x0x7ff7af293368]
+	(No symbol) [0x0x7ff7af2c846a]
+	(No symbol) [0x0x7ff7af292c16]
+	(No symbol) [0x0x7ff7af2c8680]
+	(No symbol) [0x0x7ff7af2f065c]
+	(No symbol) [0x0x7ff7af2c8243]
+	(No symbol) [0x0x7ff7af291431]
+	(No symbol) [0x0x7ff7af2921c3]
+	GetHandleVerifier [0x0x7ff7af76d2cd+3051437]
+	GetHandleVerifier [0x0x7ff7af767923+3028483]
+	GetHandleVerifier [0x0x7ff7af7858bd+3151261]
+	GetHandleVerifier [0x0x7ff7af4b185e+185662]
+	GetHandleVerifier [0x0x7ff7af4b971f+218111]
+	GetHandleVerifier [0x0x7ff7af49fb14+112628]
+	GetHandleVerifier [0x0x7ff7af49fcc9+113065]
+	GetHandleVerifier [0x0x7ff7af486c98+10616]
+	BaseThreadInitThunk [0x0x7ffc1863259d+29]
+	RtlUserThreadStart [0x0x7ffc19ecaf78+40]
+
+Failed row 4: {'Name': 'Eva Miller', 'Date': '11-07-2025', 'Time': '10:05'} - Error: Message: element click intercepted: Element <button id="submit" type="submit" class="btn btn-primary">...</button> is not clickable at point (729, 666). Other element would receive the click: <iframe frameborder="0" src="https://3d117e1a85d6afc6bd3ae9a9ca33a0e9.safeframe.googlesyndication.com/safeframe/1-0-45/html/container.html" id="google_ads_iframe_/21849154601,22343295815/Ad.Plus-Anchor_0" title="3rd party ad content" name="" scrolling="no" marginwidth="0" marginheight="0" width="728" height="90" data-is-safeframe="true" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" allow="private-state-token-redemption;attribution-reporting" aria-label="Advertisement" tabindex="0" data-google-container-id="1" style="border: 0px; vertical-align: bottom;" data-load-complete="true"></iframe>
+  (Session info: chrome=138.0.7204.184)
+Stacktrace:
+	GetHandleVerifier [0x0x7ff7af496f95+76917]
+	GetHandleVerifier [0x0x7ff7af496ff0+77008]
+	(No symbol) [0x0x7ff7af249dea]
+	(No symbol) [0x0x7ff7af2a8269]
+	(No symbol) [0x0x7ff7af2a5c02]
+	(No symbol) [0x0x7ff7af2a2c41]
+	(No symbol) [0x0x7ff7af2a1b31]
+	(No symbol) [0x0x7ff7af293368]
+	(No symbol) [0x0x7ff7af2c846a]
+	(No symbol) [0x0x7ff7af292c16]
+	(No symbol) [0x0x7ff7af2c8680]
+	(No symbol) [0x0x7ff7af2f065c]
+	(No symbol) [0x0x7ff7af2c8243]
+	(No symbol) [0x0x7ff7af291431]
+	(No symbol) [0x0x7ff7af2921c3]
+	GetHandleVerifier [0x0x7ff7af76d2cd+3051437]
+	GetHandleVerifier [0x0x7ff7af767923+3028483]
+	GetHandleVerifier [0x0x7ff7af7858bd+3151261]
+	GetHandleVerifier [0x0x7ff7af4b185e+185662]
+	GetHandleVerifier [0x0x7ff7af4b971f+218111]
+	GetHandleVerifier [0x0x7ff7af49fb14+112628]
+	GetHandleVerifier [0x0x7ff7af49fcc9+113065]
+	GetHandleVerifier [0x0x7ff7af486c98+10616]
+	BaseThreadInitThunk [0x0x7ffc1863259d+29]
+	RtlUserThreadStart [0x0x7ffc19ecaf78+40]
+
+Failed row 5: {'Name': 'Emma Garcia', 'Date': '10-07-2025', 'Time': '10:23'} - Error: Message: element click intercepted: Element <button id="submit" type="submit" class="btn btn-primary">...</button> is not clickable at point (729, 666). Other element would receive the click: <iframe frameborder="0" src="https://aa1b1af5a2eaf0f179b53700693e8dca.safeframe.googlesyndication.com/safeframe/1-0-45/html/container.html" id="google_ads_iframe_/21849154601,22343295815/Ad.Plus-Anchor_0" title="3rd party ad content" name="" scrolling="no" marginwidth="0" marginheight="0" width="728" height="90" data-is-safeframe="true" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" allow="private-state-token-redemption;attribution-reporting" aria-label="Advertisement" tabindex="0" data-google-container-id="1" style="border: 0px; vertical-align: bottom;" data-load-complete="true"></iframe>
+  (Session info: chrome=138.0.7204.184)
+Stacktrace:
+	GetHandleVerifier [0x0x7ff7af496f95+76917]
+	GetHandleVerifier [0x0x7ff7af496ff0+77008]
+	(No symbol) [0x0x7ff7af249dea]
+	(No symbol) [0x0x7ff7af2a8269]
+	(No symbol) [0x0x7ff7af2a5c02]
+	(No symbol) [0x0x7ff7af2a2c41]
+	(No symbol) [0x0x7ff7af2a1b31]
+	(No symbol) [0x0x7ff7af293368]
+	(No symbol) [0x0x7ff7af2c846a]
+	(No symbol) [0x0x7ff7af292c16]
+	(No symbol) [0x0x7ff7af2c8680]
+	(No symbol) [0x0x7ff7af2f065c]
+	(No symbol) [0x0x7ff7af2c8243]
+	(No symbol) [0x0x7ff7af291431]
+	(No symbol) [0x0x7ff7af2921c3]
+	GetHandleVerifier [0x0x7ff7af76d2cd+3051437]
+	GetHandleVerifier [0x0x7ff7af767923+3028483]
+	GetHandleVerifier [0x0x7ff7af7858bd+3151261]
+	GetHandleVerifier [0x0x7ff7af4b185e+185662]
+	GetHandleVerifier [0x0x7ff7af4b971f+218111]
+	GetHandleVerifier [0x0x7ff7af49fb14+112628]
+	GetHandleVerifier [0x0x7ff7af49fcc9+113065]
+	GetHandleVerifier [0x0x7ff7af486c98+10616]
+	BaseThreadInitThunk [0x0x7ffc1863259d+29]
+	RtlUserThreadStart [0x0x7ffc19ecaf78+40]
+
+Failed row 6: {'Name': 'Bob Johnson', 'Date': '09-07-2025', 'Time': '08:16'} - Error: Message: element click intercepted: Element <button id="submit" type="submit" class="btn btn-primary">...</button> is not clickable at point (729, 665). Other element would receive the click: <iframe frameborder="0" src="https://08da468e58f86e27c1f03fa85912bea7.safeframe.googlesyndication.com/safeframe/1-0-45/html/container.html" id="google_ads_iframe_/21849154601,22343295815/Ad.Plus-Anchor_0" title="3rd party ad content" name="" scrolling="no" marginwidth="0" marginheight="0" width="728" height="90" data-is-safeframe="true" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" allow="private-state-token-redemption;attribution-reporting" aria-label="Advertisement" tabindex="0" data-google-container-id="1" style="border: 0px; vertical-align: bottom;" data-load-complete="true"></iframe>
+  (Session info: chrome=138.0.7204.184)
+Stacktrace:
+	GetHandleVerifier [0x0x7ff7af496f95+76917]
+	GetHandleVerifier [0x0x7ff7af496ff0+77008]
+	(No symbol) [0x0x7ff7af249dea]
+	(No symbol) [0x0x7ff7af2a8269]
+	(No symbol) [0x0x7ff7af2a5c02]
+	(No symbol) [0x0x7ff7af2a2c41]
+	(No symbol) [0x0x7ff7af2a1b31]
+	(No symbol) [0x0x7ff7af293368]
+	(No symbol) [0x0x7ff7af2c846a]
+	(No symbol) [0x0x7ff7af292c16]
+	(No symbol) [0x0x7ff7af2c8680]
+	(No symbol) [0x0x7ff7af2f065c]
+	(No symbol) [0x0x7ff7af2c8243]
+	(No symbol) [0x0x7ff7af291431]
+	(No symbol) [0x0x7ff7af2921c3]
+	GetHandleVerifier [0x0x7ff7af76d2cd+3051437]
+	GetHandleVerifier [0x0x7ff7af767923+3028483]
+	GetHandleVerifier [0x0x7ff7af7858bd+3151261]
+	GetHandleVerifier [0x0x7ff7af4b185e+185662]
+	GetHandleVerifier [0x0x7ff7af4b971f+218111]
+	GetHandleVerifier [0x0x7ff7af49fb14+112628]
+	GetHandleVerifier [0x0x7ff7af49fcc9+113065]
+	GetHandleVerifier [0x0x7ff7af486c98+10616]
+	BaseThreadInitThunk [0x0x7ffc1863259d+29]
+	RtlUserThreadStart [0x0x7ffc19ecaf78+40]
+
+Failed row 7: {'Name': 'Ava Garcia', 'Date': '08-07-2025', 'Time': '09:14'} - Error: Message: element click intercepted: Element <button id="submit" type="submit" class="btn btn-primary">...</button> is not clickable at point (729, 666). Other element would receive the click: <iframe frameborder="0" src="https://673be5b0dcad1eaec23c918ee8eb28b4.safeframe.googlesyndication.com/safeframe/1-0-45/html/container.html" id="google_ads_iframe_/21849154601,22343295815/Ad.Plus-Anchor_0" title="3rd party ad content" name="" scrolling="no" marginwidth="0" marginheight="0" width="728" height="90" data-is-safeframe="true" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" allow="private-state-token-redemption;attribution-reporting" aria-label="Advertisement" tabindex="0" data-google-container-id="1" style="border: 0px; vertical-align: bottom;" data-load-complete="true"></iframe>
+  (Session info: chrome=138.0.7204.184)
+Stacktrace:
+	GetHandleVerifier [0x0x7ff7af496f95+76917]
+	GetHandleVerifier [0x0x7ff7af496ff0+77008]
+	(No symbol) [0x0x7ff7af249dea]
+	(No symbol) [0x0x7ff7af2a8269]
+	(No symbol) [0x0x7ff7af2a5c02]
+	(No symbol) [0x0x7ff7af2a2c41]
+	(No symbol) [0x0x7ff7af2a1b31]
+	(No symbol) [0x0x7ff7af293368]
+	(No symbol) [0x0x7ff7af2c846a]
+	(No symbol) [0x0x7ff7af292c16]
+	(No symbol) [0x0x7ff7af2c8680]
+	(No symbol) [0x0x7ff7af2f065c]
+	(No symbol) [0x0x7ff7af2c8243]
+	(No symbol) [0x0x7ff7af291431]
+	(No symbol) [0x0x7ff7af2921c3]
+	GetHandleVerifier [0x0x7ff7af76d2cd+3051437]
+	GetHandleVerifier [0x0x7ff7af767923+3028483]
+	GetHandleVerifier [0x0x7ff7af7858bd+3151261]
+	GetHandleVerifier [0x0x7ff7af4b185e+185662]
+	GetHandleVerifier [0x0x7ff7af4b971f+218111]
+	GetHandleVerifier [0x0x7ff7af49fb14+112628]
+	GetHandleVerifier [0x0x7ff7af49fcc9+113065]
+	GetHandleVerifier [0x0x7ff7af486c98+10616]
+	BaseThreadInitThunk [0x0x7ffc1863259d+29]
+	RtlUserThreadStart [0x0x7ffc19ecaf78+40]
+
+Failed row 8: {'Name': 'Charlie Brown', 'Date': '07-07-2025', 'Time': '08:28'} - Error: Message: element click intercepted: Element <button id="submit" type="submit" class="btn btn-primary">...</button> is not clickable at point (729, 666). Other element would receive the click: <iframe frameborder="0" src="https://f802363552936f1162886c2dd47d9aa7.safeframe.googlesyndication.com/safeframe/1-0-45/html/container.html" id="google_ads_iframe_/21849154601,22343295815/Ad.Plus-Anchor_0" title="3rd party ad content" name="" scrolling="no" marginwidth="0" marginheight="0" width="728" height="90" data-is-safeframe="true" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" allow="private-state-token-redemption;attribution-reporting" aria-label="Advertisement" tabindex="0" data-google-container-id="1" style="border: 0px; vertical-align: bottom;" data-load-complete="true"></iframe>
+  (Session info: chrome=138.0.7204.184)
+Stacktrace:
+	GetHandleVerifier [0x0x7ff7af496f95+76917]
+	GetHandleVerifier [0x0x7ff7af496ff0+77008]
+	(No symbol) [0x0x7ff7af249dea]
+	(No symbol) [0x0x7ff7af2a8269]
+	(No symbol) [0x0x7ff7af2a5c02]
+	(No symbol) [0x0x7ff7af2a2c41]
+	(No symbol) [0x0x7ff7af2a1b31]
+	(No symbol) [0x0x7ff7af293368]
+	(No symbol) [0x0x7ff7af2c846a]
+	(No symbol) [0x0x7ff7af292c16]
+	(No symbol) [0x0x7ff7af2c8680]
+	(No symbol) [0x0x7ff7af2f065c]
+	(No symbol) [0x0x7ff7af2c8243]
+	(No symbol) [0x0x7ff7af291431]
+	(No symbol) [0x0x7ff7af2921c3]
+	GetHandleVerifier [0x0x7ff7af76d2cd+3051437]
+	GetHandleVerifier [0x0x7ff7af767923+3028483]
+	GetHandleVerifier [0x0x7ff7af7858bd+3151261]
+	GetHandleVerifier [0x0x7ff7af4b185e+185662]
+	GetHandleVerifier [0x0x7ff7af4b971f+218111]
+	GetHandleVerifier [0x0x7ff7af49fb14+112628]
+	GetHandleVerifier [0x0x7ff7af49fcc9+113065]
+	GetHandleVerifier [0x0x7ff7af486c98+10616]
+	BaseThreadInitThunk [0x0x7ffc1863259d+29]
+	RtlUserThreadStart [0x0x7ffc19ecaf78+40]
+
+Failed row 9: {'Name': 'Liam Davis', 'Date': '06-07-2025', 'Time': '10:45'} - Error: Message: element click intercepted: Element <button id="submit" type="submit" class="btn btn-primary">...</button> is not clickable at point (729, 665). Other element would receive the click: <iframe frameborder="0" src="https://02f9a6889a727404848516a6e74a1fd2.safeframe.googlesyndication.com/safeframe/1-0-45/html/container.html" id="google_ads_iframe_/21849154601,22343295815/Ad.Plus-Anchor_0" title="3rd party ad content" name="" scrolling="no" marginwidth="0" marginheight="0" width="728" height="90" data-is-safeframe="true" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" allow="private-state-token-redemption;attribution-reporting" aria-label="Advertisement" tabindex="0" data-google-container-id="1" style="border: 0px; vertical-align: bottom;" data-load-complete="true"></iframe>
+  (Session info: chrome=138.0.7204.184)
+Stacktrace:
+	GetHandleVerifier [0x0x7ff7af496f95+76917]
+	GetHandleVerifier [0x0x7ff7af496ff0+77008]
+	(No symbol) [0x0x7ff7af249dea]
+	(No symbol) [0x0x7ff7af2a8269]
+	(No symbol) [0x0x7ff7af2a5c02]
+	(No symbol) [0x0x7ff7af2a2c41]
+	(No symbol) [0x0x7ff7af2a1b31]
+	(No symbol) [0x0x7ff7af293368]
+	(No symbol) [0x0x7ff7af2c846a]
+	(No symbol) [0x0x7ff7af292c16]
+	(No symbol) [0x0x7ff7af2c8680]
+	(No symbol) [0x0x7ff7af2f065c]
+	(No symbol) [0x0x7ff7af2c8243]
+	(No symbol) [0x0x7ff7af291431]
+	(No symbol) [0x0x7ff7af2921c3]
+	GetHandleVerifier [0x0x7ff7af76d2cd+3051437]
+	GetHandleVerifier [0x0x7ff7af767923+3028483]
+	GetHandleVerifier [0x0x7ff7af7858bd+3151261]
+	GetHandleVerifier [0x0x7ff7af4b185e+185662]
+	GetHandleVerifier [0x0x7ff7af4b971f+218111]
+	GetHandleVerifier [0x0x7ff7af49fb14+112628]
+	GetHandleVerifier [0x0x7ff7af49fcc9+113065]
+	GetHandleVerifier [0x0x7ff7af486c98+10616]
+	BaseThreadInitThunk [0x0x7ffc1863259d+29]
+	RtlUserThreadStart [0x0x7ffc19ecaf78+40]
+
+Failed row 10: {'Name': 'Emma Davis', 'Date': '05-07-2025', 'Time': '09:43'} - Error: Message: element click intercepted: Element <button id="submit" type="submit" class="btn btn-primary">...</button> is not clickable at point (729, 665). Other element would receive the click: <div>...</div>
+  (Session info: chrome=138.0.7204.184)
+Stacktrace:
+	GetHandleVerifier [0x0x7ff7af496f95+76917]
+	GetHandleVerifier [0x0x7ff7af496ff0+77008]
+	(No symbol) [0x0x7ff7af249dea]
+	(No symbol) [0x0x7ff7af2a8269]
+	(No symbol) [0x0x7ff7af2a5c02]
+	(No symbol) [0x0x7ff7af2a2c41]
+	(No symbol) [0x0x7ff7af2a1b31]
+	(No symbol) [0x0x7ff7af293368]
+	(No symbol) [0x0x7ff7af2c846a]
+	(No symbol) [0x0x7ff7af292c16]
+	(No symbol) [0x0x7ff7af2c8680]
+	(No symbol) [0x0x7ff7af2f065c]
+	(No symbol) [0x0x7ff7af2c8243]
+	(No symbol) [0x0x7ff7af291431]
+	(No symbol) [0x0x7ff7af2921c3]
+	GetHandleVerifier [0x0x7ff7af76d2cd+3051437]
+	GetHandleVerifier [0x0x7ff7af767923+3028483]
+	GetHandleVerifier [0x0x7ff7af7858bd+3151261]
+	GetHandleVerifier [0x0x7ff7af4b185e+185662]
+	GetHandleVerifier [0x0x7ff7af4b971f+218111]
+	GetHandleVerifier [0x0x7ff7af49fb14+112628]
+	GetHandleVerifier [0x0x7ff7af49fcc9+113065]
+	GetHandleVerifier [0x0x7ff7af486c98+10616]
+	BaseThreadInitThunk [0x0x7ffc1863259d+29]
+	RtlUserThreadStart [0x0x7ffc19ecaf78+40]
+
+Failed row 11: {'Name': 'Noah Garcia', 'Date': '04-07-2025', 'Time': '08:00'} - Error: Message: element click intercepted: Element <button id="submit" type="submit" class="btn btn-primary">...</button> is not clickable at point (729, 665). Other element would receive the click: <div>...</div>
+  (Session info: chrome=138.0.7204.184)
+Stacktrace:
+	GetHandleVerifier [0x0x7ff7af496f95+76917]
+	GetHandleVerifier [0x0x7ff7af496ff0+77008]
+	(No symbol) [0x0x7ff7af249dea]
+	(No symbol) [0x0x7ff7af2a8269]
+	(No symbol) [0x0x7ff7af2a5c02]
+	(No symbol) [0x0x7ff7af2a2c41]
+	(No symbol) [0x0x7ff7af2a1b31]
+	(No symbol) [0x0x7ff7af293368]
+	(No symbol) [0x0x7ff7af2c846a]
+	(No symbol) [0x0x7ff7af292c16]
+	(No symbol) [0x0x7ff7af2c8680]
+	(No symbol) [0x0x7ff7af2f065c]
+	(No symbol) [0x0x7ff7af2c8243]
+	(No symbol) [0x0x7ff7af291431]
+	(No symbol) [0x0x7ff7af2921c3]
+	GetHandleVerifier [0x0x7ff7af76d2cd+3051437]
+	GetHandleVerifier [0x0x7ff7af767923+3028483]
+	GetHandleVerifier [0x0x7ff7af7858bd+3151261]
+	GetHandleVerifier [0x0x7ff7af4b185e+185662]
+	GetHandleVerifier [0x0x7ff7af4b971f+218111]
+	GetHandleVerifier [0x0x7ff7af49fb14+112628]
+	GetHandleVerifier [0x0x7ff7af49fcc9+113065]
+	GetHandleVerifier [0x0x7ff7af486c98+10616]
+	BaseThreadInitThunk [0x0x7ffc1863259d+29]
+	RtlUserThreadStart [0x0x7ffc19ecaf78+40]
+

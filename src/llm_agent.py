@@ -2,65 +2,114 @@ from together import Together
 from dotenv import load_dotenv
 import os
 import json
-import re
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+from bs4 import BeautifulSoup
+import time
 
-load_dotenv()  # Load variables from .env
+load_dotenv()
 
 def extract_json_from_text(raw_text):
+    """Safely extracts a JSON object from a string."""
     try:
-        start = raw_text.index('{')
-        end = raw_text.rindex('}') + 1
+        # Use a more robust method to find the JSON block
+        start = raw_text.find('{')
+        end = raw_text.rfind('}') + 1
+        if start == -1 or end == 0:
+            print("No JSON object found in the text.")
+            return None
         json_block = raw_text[start:end]
         return json.loads(json_block)
     except Exception as e:
-        print("Error parsing LLM JSON:", str(e))
+        print(f"Error parsing LLM JSON: {e}")
         return None
 
+def extract_form_fields_from_url(url):
+    """
+    Uses Selenium and BeautifulSoup to extract input, select, and textarea fields from a live URL.
+    Returns a list of field 'id' or 'name' attributes.
+    """
+    CHROMEDRIVER_PATH = "D:/Courses/Intel_AI_Course/Project_1/attendance_fillup_agent/chromedriver.exe" # Make sure this path is correct
+    service = Service(CHROMEDRIVER_PATH)
+    options = webdriver.ChromeOptions()
+    options.add_argument('--headless') # Run in the background
+    options.add_argument('--disable-gpu')
+    driver = webdriver.Chrome(service=service, options=options)
 
-def get_mapping_from_instruction(instruction):
+    try:
+        driver.get(url)
+        time.sleep(3) # Wait for the page to load completely
+        page_source = driver.page_source
+        soup = BeautifulSoup(page_source, 'html.parser')
+
+        fields = set()
+        # Find all relevant form elements
+        form_elements = soup.find_all(['input', 'textarea', 'select'])
+
+        for element in form_elements:
+            # Prioritize 'id', then 'name', as the identifier
+            field_id = element.get('id')
+            if field_id and field_id not in ['submit', 'button']: # Ignore submit buttons
+                 fields.add(field_id)
+            else:
+                field_name = element.get('name')
+                if field_name:
+                    fields.add(field_name)
+
+        return list(fields)
+    finally:
+        driver.quit()
+
+
+def get_mapping_from_instruction(instruction, form_fields, file_columns):
+    """
+    Generates a mapping between form fields and file columns using an LLM.
+    """
     prompt = f"""
-You are a smart AI agent. Based on the instruction below, return a valid JSON object that contains:
+You are an intelligent mapping agent. Your task is to map HTML form field identifiers to CSV/Excel column headers based on a user's instruction.
 
-- file_path: a full path to the CSV file
-- field_mapping: map HTML form field IDs (name, date, time) to CSV column headers
-- row_to_fill: how many rows to fill, based on the user's instruction
+User Instruction: "{instruction}"
 
-Instruction:
-{instruction}
+Available Form Fields:
+{json.dumps(form_fields, indent=2)}
 
-Only return valid JSON in this format:
+Available File Columns:
+{json.dumps(file_columns, indent=2)}
 
+Based on the instruction and the provided lists, create a JSON object that maps the form fields to the most appropriate file columns. The keys of the JSON object must be the form field identifiers and the values must be the corresponding column names from the file.
+
+Only return a valid JSON object in the following format. Do not add any explanations, notes, or apologies.
+
+Example Output Format:
 {{
-  "file_path": "D:/Courses/Intel_AI_Course/Project_1/attendance_fillup_agent/data/attendance_data.csv",
   "field_mapping": {{
-    "name": "Name",
-    "date": "Date",
-    "time": "Time"
-  }},
-  "row_to_fill": 3
+    "form_field_id_1": "corresponding_column_name_1",
+    "form_field_id_2": "corresponding_column_name_2"
+  }}
 }}
 """
     client = Together()
     try:
         response = client.chat.completions.create(
-            model="deepseek-ai/DeepSeek-R1-Distill-Llama-70B-free",
-            messages=[
-                {
-                    "role": "user",
-                    "content": prompt
-                }
-            ]
+            model="meta-llama/Llama-3-8b-chat-hf", # Using a reliable model
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0.0 # Be deterministic for mapping
         )
 
         raw_text = response.choices[0].message.content
-        print("=== RAW LLM OUTPUT ===")
+        print("=== RAW LLM OUTPUT FOR MAPPING ===")
         print(raw_text)
 
         return extract_json_from_text(raw_text)
 
     except Exception as e:
-        print("Error while calling LLM", e)
+        print(f"Error while calling LLM for mapping: {e}")
         return None
+
+# The functions ask_llm_what_to_do and solve_row_error can remain as they are,
+# as they are for post-processing failed rows and their logic is still applicable.
+# (Code for these functions is omitted for brevity but should be kept from your original file)
 
 # If some row failed row to fillup and get error
 
