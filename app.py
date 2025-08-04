@@ -6,7 +6,6 @@ from selenium.webdriver.chrome.service import Service
 import time
 from src.llm_agent import get_mapping_from_instruction, extract_form_fields_from_url
 from src.selenium_runner import check_for_login_and_authenticate, run_agent_with_mapping
-from webdriver_manager.chrome import ChromeDriverManager
 
 # --- Page Configuration & Session State ---
 st.set_page_config(page_title="AI Form Filler Agent", layout="wide")
@@ -39,35 +38,33 @@ with col1:
             with st.spinner("Analyzing URL... This may take a moment."):
                 driver = None
                 try:
-                    # Use a headless driver for quick, non-intrusive analysis
-                    CHROMEDRIVER_PATH = "D:/Courses/Intel_AI_Course/Project_1/attendance_fillup_agent/chromedriver.exe"
-                    service = Service(CHROMEDRIVER_PATH)
+                    # --- NEW, SIMPLIFIED SETUP FOR STREAMLIT CLOUD ---
                     options = webdriver.ChromeOptions()
-                    options.add_argument('--headless')
-                    options.add_argument('--disable-gpu')
-                    driver = webdriver.Chrome(service=service, options=options)
-
-                    driver.save_screenshot('debug_screenshot.png')
-                    with open('debug_page_source.html', 'w', encoding='utf-8') as f:
-                        f.write(driver.page_source)
+                    options.add_argument("--headless")
+                    options.add_argument("--no-sandbox")
+                    options.add_argument("--disable-dev-shm-usage")
+                    options.add_argument("--disable-gpu")
                     
-                    # If credentials are provided, attempt to log in before extracting
+                    # When chromedriver is installed via packages.txt, Selenium finds it automatically
+                    driver = webdriver.Chrome(options=options)
+                    # --- END OF NEW SETUP ---
+
+                    # The rest of the logic remains the same
                     if st.session_state.auth_credentials:
-                        st.info("Credentials provided. Attempting login before analysis...")
-                        auth_result = check_for_login_and_authenticate(driver, url_input, st.session_state.auth_credentials)
-                        if auth_result is not True:
-                         st.error("Login failed during analysis. Cannot proceed.")
-                         st.stop()
+                        st.info("Credentials provided. Logging in before analysis...")
+                        check_for_login_and_authenticate(driver, url_input, st.session_state.auth_credentials)
                     else:
                         driver.get(url_input)
-
-                    time.sleep(3) # Extra wait
-                    driver.save_screenshot('debug_analysis_screenshot.png')
-
+                    
+                    time.sleep(3) # Extra wait for page to render
                     fields = extract_form_fields_from_url(driver)
                     st.session_state.form_fields = fields # Save to session state
+
                 except Exception as e:
                     st.error(f"Failed to start driver or access URL. Error: {e}")
+                    # Also take a screenshot on failure to help debug
+                    if driver:
+                        driver.save_screenshot('debug_error_screenshot.png')
                 finally:
                     if driver:
                         driver.quit()
@@ -121,9 +118,17 @@ if st.button("🚀 Start Agent and Fill Form"):
         driver = None
         try:
             with st.spinner("🤖 Agent is starting... Please wait."):
-                # 1. Initialize Selenium Driver
-                driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
-                st.info("✅ Driver started.")
+            
+                st.info("✅ Initializing driver for the main task...")
+                options = webdriver.ChromeOptions()
+                options.add_argument("--headless")
+                options.add_argument("--no-sandbox")
+                options.add_argument("--disable-dev-shm-usage")
+                options.add_argument("--disable-gpu")
+                
+                # When chromedriver is installed via packages.txt, Selenium finds it automatically
+                driver = webdriver.Chrome(options=options)
+                st.info("✅ Driver started successfully.")
 
                 # 2. Handle Login
                 if st.session_state.auth_credentials:
