@@ -8,7 +8,7 @@ from src.llm_agent import solve_row_error
 from src.llm_agent import ask_llm_what_to_do
 import os
 
-def run_agent_with_mapping(mapping, url):
+def run_agent_with_mapping(mapping, driver):
     """
     Runs a Selenium agent to fill a web form from a live URL using a dynamic mapping.
     """
@@ -38,9 +38,6 @@ def run_agent_with_mapping(mapping, url):
         # --- Main Loop to Fill Form ---
         for index, row in data.iterrows():
             try:
-                # Navigate to the form for each entry to ensure a fresh state
-                driver.get(url)
-                time.sleep(2) # Wait for page to be ready
 
                 filled_data_log = []
                 # Dynamically fill fields based on the mapping
@@ -97,6 +94,78 @@ def run_agent_with_mapping(mapping, url):
             
     return failed_rows
 
+# Check if the page is a login page and handle authentication
+
+def check_for_login_and_authenticate(driver, url, credentials=None):
+    """
+    Checks if the page is a login page and uses credentials to log in if provided.
+    """
+    driver.get(url)
+    time.sleep(2)
+
+    login_field_identifiers = ['user-name', 'username', 'email', 'user_login']
+    password_field_identifiers = ['password', 'pass', 'user_pass']
+    
+    login_field, password_field = None, None
+
+    for identifier in login_field_identifiers:
+        try:
+            login_field = driver.find_element(By.ID, identifier) or driver.find_element(By.NAME, identifier)
+            if login_field: break
+        except NoSuchElementException:
+            continue
+
+    for identifier in password_field_identifiers:
+        try:
+            password_field = driver.find_element(By.ID, identifier) or driver.find_element(By.NAME, identifier)
+            if password_field: break
+        except NoSuchElementException:
+            continue
+
+    if login_field and password_field:
+        if credentials:
+            print("Login page detected. Authenticating...")
+            login_field.send_keys(credentials['username'])
+            password_field.send_keys(credentials['password'])
+            
+            # --- NEW: Robust Button Finding Logic ---
+            submit_button = None
+            # A list of strategies to find the login button
+            button_strategies = [
+                (By.XPATH, "//button[@type='submit']"),
+                (By.XPATH, "//input[@type='submit']"),
+                (By.ID, "login-button"),
+                (By.ID, "Login"),
+                (By.XPATH, "//*[contains(text(), 'Log In')]"),
+                (By.XPATH, "//*[contains(text(), 'Sign In')]"),
+                (By.XPATH, "//*[contains(text(), 'Login')]"),
+                (By.CLASS_NAME, "login-button") # Add more common class names if you find them
+            ]
+
+            for by, selector in button_strategies:
+                try:
+                    print(f"Trying to find button with: {by} = '{selector}'")
+                    submit_button = driver.find_element(by, selector)
+                    if submit_button:
+                        print("Button found!")
+                        break # Exit the loop once the button is found
+                except NoSuchElementException:
+                    continue # Try the next strategy
+            
+            if submit_button:
+                submit_button.click()
+                print("Login submitted.")
+                time.sleep(3)
+                return True
+            else:
+                # This is where your error was triggered
+                print("Could not find a submit button using any known strategy.")
+                return False
+        else:
+            return "LOGIN_REQUIRED" 
+            
+    print("No standard login page detected. Proceeding...")
+    return True
 
 def run_agent_with_mapping_and_return_failed(mapping, url):
     """Wrapper function for easier calling from Streamlit."""

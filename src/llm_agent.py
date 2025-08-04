@@ -25,7 +25,7 @@ def extract_json_from_text(raw_text):
         print(f"Error parsing LLM JSON: {e}")
         return None
 
-def extract_form_fields_from_url(url):
+def extract_form_fields_from_url(driver):
     """
     Uses Selenium and BeautifulSoup to extract input, select, and textarea fields from a live URL.
     Returns a list of field 'id' or 'name' attributes.
@@ -38,8 +38,6 @@ def extract_form_fields_from_url(url):
     driver = webdriver.Chrome(service=service, options=options)
 
     try:
-        driver.get(url)
-        time.sleep(3) # Wait for the page to load completely
         page_source = driver.page_source
         soup = BeautifulSoup(page_source, 'html.parser')
 
@@ -58,8 +56,9 @@ def extract_form_fields_from_url(url):
                     fields.add(field_name)
 
         return list(fields)
-    finally:
-        driver.quit()
+    except Exception as e:
+        print(f"Error extracting form fields: {e}")
+        return []
 
 
 def get_mapping_from_instruction(instruction, form_fields, file_columns):
