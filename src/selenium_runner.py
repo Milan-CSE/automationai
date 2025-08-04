@@ -97,6 +97,7 @@ def run_agent_with_mapping(mapping, url):
             
     return failed_rows
 
+
 def run_agent_with_mapping_and_return_failed(mapping, url):
     """Wrapper function for easier calling from Streamlit."""
     try:
