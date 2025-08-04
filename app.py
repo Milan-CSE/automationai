@@ -12,96 +12,57 @@ st.set_page_config(page_title="AI Form Filler Agent", layout="wide")
 st.session_state.setdefault("failed_rows", [])
 st.session_state.setdefault("mapping", None)
 st.session_state.setdefault("uploaded_file_path", None)
-st.session_state.setdefault("form_fields", None) # To store extracted fields
+st.session_state.setdefault("form_fields", None) 
 st.session_state.setdefault("auth_credentials", None)
 
 # --- UI: Title ---
 st.markdown("<h1 style='text-align: center; color:#4CAF50;'>🤖 AI Form Filler Agent</h1>", unsafe_allow_html=True)
 st.markdown("---")
 
+# --- Function to setup the driver (to avoid code repetition) ---
+def setup_driver():
+    options = webdriver.ChromeOptions()
+    options.add_argument("--headless")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--disable-gpu")
+    
+    # Explicitly point to the chromedriver installed by packages.txt
+    service = Service("/usr/bin/chromedriver")
+    
+    return webdriver.Chrome(service=service, options=options)
+
 # --- UI: Step 1 - Inputs ---
-st.subheader("Please Provide Required Information")
-col1, col2 = st.columns(2)
+st.subheader("Step 1: Analyze the Webpage")
+url_input = st.text_input("Enter the live URL of the web form", placeholder="https://www.saucedemo.com")
 
-with col1:
-    url_input = st.text_input("Enter the live URL of the web form", placeholder="https://www.saucedemo.com")
-    with st.expander("🔒 Provide Login Credentials (if needed for analysis or filling)"):
-        username = st.text_input("Username / Email")
-        password = st.text_input("Password", type="password")
-        st.session_state.auth_credentials = {"username": username, "password": password} if username and password else None
+if st.button("👁️ Analyze URL for Fields"):
+    if not url_input:
+        st.error("Please enter a URL to analyze.")
+    else:
+        with st.spinner("Analyzing URL..."):
+            driver = None
+            try:
+                driver = setup_driver()
+                
+                if st.session_state.auth_credentials:
+                    st.info("Credentials provided. Logging in before analysis...")
+                    check_for_login_and_authenticate(driver, url_input, st.session_state.auth_credentials)
+                else:
+                    driver.get(url_input)
+                
+                time.sleep(3)
+                fields = extract_form_fields_from_url(driver)
+                st.session_state.form_fields = fields
+            except Exception as e:
+                st.error(f"Failed to start driver or access URL. Error: {e}")
+                if driver: driver.save_screenshot('debug_error_screenshot.png')
+            finally:
+                if driver: driver.quit()
 
-    # --- NEW: URL Field Analysis Section ---
-    if st.button("👁️ Analyze URL for Fields"):
-        if not url_input:
-            st.error("Please enter a URL to analyze.")
-        else:
-            with st.spinner("Analyzing URL... This may take a moment."):
-                driver = None
-                try:
-                    # --- NEW, SIMPLIFIED SETUP FOR STREAMLIT CLOUD ---
-                    options = webdriver.ChromeOptions()
-                    options.add_argument("--headless")
-                    options.add_argument("--no-sandbox")
-                    options.add_argument("--disable-dev-shm-usage")
-                    options.add_argument("--disable-gpu")
-                    
-                    # When chromedriver is installed via packages.txt, Selenium finds it automatically
-                    driver = webdriver.Chrome(options=options)
-                    # --- END OF NEW SETUP ---
-
-                    # The rest of the logic remains the same
-                    if st.session_state.auth_credentials:
-                        st.info("Credentials provided. Logging in before analysis...")
-                        check_for_login_and_authenticate(driver, url_input, st.session_state.auth_credentials)
-                    else:
-                        driver.get(url_input)
-                    
-                    time.sleep(3) # Extra wait for page to render
-                    fields = extract_form_fields_from_url(driver)
-                    st.session_state.form_fields = fields # Save to session state
-
-                except Exception as e:
-                    st.error(f"Failed to start driver or access URL. Error: {e}")
-                    # Also take a screenshot on failure to help debug
-                    if driver:
-                        driver.save_screenshot('debug_error_screenshot.png')
-                finally:
-                    if driver:
-                        driver.quit()
-
-with col2:
-    uploaded_file = st.file_uploader("Upload your data file", type=["csv", "xlsx", "xls"])
-    if uploaded_file:
-        data_dir = "data"
-        if not os.path.exists(data_dir):
-            os.makedirs(data_dir)
-        temp_path = os.path.join(data_dir, "uploaded_file" + os.path.splitext(uploaded_file.name)[1])
-        with open(temp_path, "wb") as f:
-            f.write(uploaded_file.getbuffer())
-        st.session_state.uploaded_file_path = temp_path
-
-# --- Display Detected Fields and File Preview ---
+# --- Display Sections ---
 st.markdown("---")
 col_fields, col_preview = st.columns(2)
-
-with col_fields:
-    if st.session_state.form_fields:
-        st.subheader("Detected Web Form Fields")
-        st.success(f"Found {len(st.session_state.form_fields)} fields.")
-        st.json(st.session_state.form_fields)
-    elif st.session_state.form_fields == []:
-        st.warning("Analysis complete, but no form fields were found.")
-
-with col_preview:
-    if st.session_state.uploaded_file_path:
-        st.subheader("Uploaded File Preview")
-        try:
-            df = pd.read_csv(st.session_state.uploaded_file_path) if st.session_state.uploaded_file_path.endswith('.csv') else pd.read_excel(st.session_state.uploaded_file_path)
-            st.write("**File Columns:**", df.columns.tolist())
-            st.write("**File Head (first 5 rows):**")
-            st.dataframe(df.head())
-        except Exception as e:
-            st.error(f"Could not read or preview the uploaded file. Error: {e}")
 
 
 # --- UI: Step 2 - Run the Agent ---
@@ -119,15 +80,9 @@ if st.button("🚀 Start Agent and Fill Form"):
         try:
             with st.spinner("🤖 Agent is starting... Please wait."):
             
+                # Use the helper function
                 st.info("✅ Initializing driver for the main task...")
-                options = webdriver.ChromeOptions()
-                options.add_argument("--headless")
-                options.add_argument("--no-sandbox")
-                options.add_argument("--disable-dev-shm-usage")
-                options.add_argument("--disable-gpu")
-                
-                # When chromedriver is installed via packages.txt, Selenium finds it automatically
-                driver = webdriver.Chrome(options=options)
+                driver = setup_driver()
                 st.info("✅ Driver started successfully.")
 
                 # 2. Handle Login
