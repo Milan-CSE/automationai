@@ -58,7 +58,7 @@ def run_agent_with_mapping(mapping, driver):
                 print(f"Filled row {index + 1}: {', '.join(filled_data_log)}")
                 
                 # Find and click the submit button
-                # This might need to be more robust (e.g., find by text or a more specific XPath)
+               
                 submit_button = driver.find_element(By.XPATH, "//input[@type='submit'] | //button[@type='submit']")
                 submit_button.click()
                 time.sleep(2) # Wait for submission processing

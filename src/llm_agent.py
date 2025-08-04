@@ -130,9 +130,6 @@ Example Output Format:
         print(f"Error while calling LLM for mapping: {e}")
         return None
 
-# The functions ask_llm_what_to_do and solve_row_error can remain as they are,
-# as they are for post-processing failed rows and their logic is still applicable.
-# (Code for these functions is omitted for brevity but should be kept from your original file)
 
 # If some row failed row to fillup and get error
 

@@ -6,6 +6,7 @@ from selenium.webdriver.chrome.service import Service
 import time
 from src.llm_agent import get_mapping_from_instruction, extract_form_fields_from_url
 from src.selenium_runner import check_for_login_and_authenticate, run_agent_with_mapping
+from webdriver_manager.chrome import ChromeDriverManager
 
 # --- Page Configuration & Session State ---
 st.set_page_config(page_title="AI Form Filler Agent", layout="wide")
@@ -121,9 +122,7 @@ if st.button("🚀 Start Agent and Fill Form"):
         try:
             with st.spinner("🤖 Agent is starting... Please wait."):
                 # 1. Initialize Selenium Driver
-                CHROMEDRIVER_PATH = "D:/Courses/Intel_AI_Course/Project_1/attendance_fillup_agent/chromedriver.exe"
-                service = Service(CHROMEDRIVER_PATH)
-                driver = webdriver.Chrome(service=service)
+                driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
                 st.info("✅ Driver started.")
 
                 # 2. Handle Login
