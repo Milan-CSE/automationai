@@ -5,6 +5,8 @@ import json
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from bs4 import BeautifulSoup
 import time
 
@@ -27,38 +29,60 @@ def extract_json_from_text(raw_text):
 
 def extract_form_fields_from_url(driver):
     """
-    Uses Selenium and BeautifulSoup to extract input, select, and textarea fields from a live URL.
-    Returns a list of field 'id' or 'name' attributes.
+    Advanced extractor that uses the PASSED-IN driver to handle iFrames and Shadow DOM.
     """
-    CHROMEDRIVER_PATH = "D:/Courses/Intel_AI_Course/Project_1/attendance_fillup_agent/chromedriver.exe" # Make sure this path is correct
-    service = Service(CHROMEDRIVER_PATH)
-    options = webdriver.ChromeOptions()
-    options.add_argument('--headless') # Run in the background
-    options.add_argument('--disable-gpu')
-    driver = webdriver.Chrome(service=service, options=options)
-
+    # DO NOT CREATE A NEW DRIVER HERE. Use the one provided as an argument.
+    print(f"Attempting to extract fields from page: {driver.title}")
+    
     try:
-        page_source = driver.page_source
-        soup = BeautifulSoup(page_source, 'html.parser')
-
-        fields = set()
-        # Find all relevant form elements
-        form_elements = soup.find_all(['input', 'textarea', 'select'])
-
-        for element in form_elements:
-            # Prioritize 'id', then 'name', as the identifier
-            field_id = element.get('id')
-            if field_id and field_id not in ['submit', 'button']: # Ignore submit buttons
-                 fields.add(field_id)
-            else:
-                field_name = element.get('name')
-                if field_name:
-                    fields.add(field_name)
-
-        return list(fields)
+        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.TAG_NAME, "body")))
     except Exception as e:
-        print(f"Error extracting form fields: {e}")
+        print(f"Page body did not load in time: {e}")
         return []
+
+    js_script = """
+    function getFormFields(element) {
+        let fields = [];
+        element.querySelectorAll('input, select, textarea').forEach(el => {
+            if (el.id) fields.push(el.id);
+            else if (el.name) fields.push(el.name);
+        });
+        element.querySelectorAll('*').forEach(el => {
+            if (el.shadowRoot) {
+                fields = fields.concat(getFormFields(el.shadowRoot));
+            }
+        });
+        return fields;
+    }
+    return getFormFields(document);
+    """
+    try:
+        all_fields = driver.execute_script(js_script)
+        all_fields = list(set(f for f in all_fields if f and f.lower() not in ['submit', 'button', 'reset']))
+        if all_fields:
+            print(f"Found {len(all_fields)} fields (including Shadow DOM).")
+            return all_fields
+
+        print("No fields in main document, checking for iFrames...")
+        iframes = driver.find_elements(By.TAG_NAME, 'iframe')
+        for frame in iframes:
+            try:
+                driver.switch_to.frame(frame)
+                time.sleep(1)
+                iframe_fields = driver.execute_script(js_script)
+                driver.switch_to.default_content()
+                iframe_fields = list(set(f for f in iframe_fields if f and f.lower() not in ['submit', 'button', 'reset']))
+                if iframe_fields:
+                    print(f"Found {len(iframe_fields)} fields inside an iframe.")
+                    return iframe_fields
+            except Exception as e:
+                print(f"Could not process iframe: {e}")
+                driver.switch_to.default_content()
+        return []
+    except Exception as e:
+        print(f"An error occurred during field extraction: {e}")
+        return []
+
 
 
 def get_mapping_from_instruction(instruction, form_fields, file_columns):

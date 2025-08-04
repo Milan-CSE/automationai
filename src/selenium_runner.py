@@ -12,22 +12,14 @@ def run_agent_with_mapping(mapping, driver):
     """
     Runs a Selenium agent to fill a web form from a live URL using a dynamic mapping.
     """
-    CHROMEDRIVER_PATH = "D:/Courses/Intel_AI_Course/Project_1/attendance_fillup_agent/chromedriver.exe" # Make sure this path is correct
-    service = Service(CHROMEDRIVER_PATH)
-    driver = webdriver.Chrome(service=service)
     
     failed_rows = []
     
     try:
         # Read data from CSV or Excel
         file_path = mapping["file_path"]
-        if file_path.endswith('.csv'):
-            data = pd.read_csv(file_path)
-        else:
-            data = pd.read_excel(file_path)
-
+        data = pd.read_csv(file_path) if file_path.endswith('.csv') else pd.read_excel(file_path)
         row_limit = int(mapping.get("row_to_fill", len(data)))
-        print(f"Limiting to {row_limit} rows")
         data = data.head(row_limit)
 
         log_dir = "logs"
