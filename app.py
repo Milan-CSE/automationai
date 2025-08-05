@@ -18,8 +18,8 @@ st.markdown("---")
 # --- Function to setup the driver for Streamlit Cloud ---
 def setup_driver():
     options = webdriver.ChromeOptions()
-    # Explicitly tell Selenium where the browser binary is
-    options.binary_location = "/usr/bin/google-chrome-stable"
+    # Explicitly tell Selenium where the browser binary is for Chromium
+    options.binary_location = "/usr/bin/chromium-browser"
     options.add_argument("--headless")
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")

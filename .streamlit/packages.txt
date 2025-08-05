@@ -1,5 +1,8 @@
-google-chrome-stable
+# Use Chromium which is often more stable in cloud environments
+chromium-browser
 chromium-chromedriver
+
+# Core system dependencies
 libglib2.0-0
 libnss3
 libgconf-2-4
