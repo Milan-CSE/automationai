@@ -1,6 +1,6 @@
-# Use Chromium which is often more stable in cloud environments
-chromium-browser
-chromium-chromedriver
+# Correct package names for Debian 11 (Bullseye)
+chromium
+chromium-driver
 
 # Core system dependencies
 libglib2.0-0
